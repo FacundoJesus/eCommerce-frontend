@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { FaShoppingCart } from "react-icons/fa";
+import ProductViewModal from "./ProductViewModal";
 
 const ProductCard = ({productId, productName, image, description, quantity, price, discount, specialPrice}) => {
     
@@ -74,18 +75,24 @@ const ProductCard = ({productId, productName, image, description, quantity, pric
                             ${Number(price).toFixed(2)}
                         </span>
                     )}
+                    <button 
+                        disabled= {!isAvailable || btnLoader}
+                        onClick={() => {}}
+                        className={`bg-blue-500 ${isAvailable ? "opacity-100 hover:bg-blue-600 cursor-pointer" : "opacity-70"}
+                                    text-white py-2 px-3 rounded-lg items-center transition-colors duration-300 w-36 flex justifty-center`}>
+                        <FaShoppingCart className="mr-2"/>
+                        {isAvailable ? "Add to Cart" : "Stock Out"}
+                    </button>
                 </div>
 
-                <button 
-                    disabled= {!isAvailable || btnLoader}
-                    onClick={() => {}}
-                    className={`bg-blue-500 ${isAvailable ? "opacity-100 hover:bg-blue-600 cursor-pointer" : "opacity-70"}
-                                text-white py-2 px-3 rounded-lg items-center transition-colors duration-300 w-36 flex justifty-center`}>
-                    <FaShoppingCart className="mr-2"/>
-                    {isAvailable ? "Add to Cart" : "Stock Out"}
-                </button>
-                
             </div>
+            <ProductViewModal 
+                open={openProductViewModal}
+                setOpen= {setOpenProductViewModal}
+                product = {selectedViewProduct}
+                isAvailable = {isAvailable}
+            />
+
 
         </div>
     )
