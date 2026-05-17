@@ -8,7 +8,7 @@ const ProductCard = ({productId, productName, image, description, quantity, pric
     const [selectedViewProduct, setSelectedViewProduct] = useState("");
     const isAvailable = quantity && Number(quantity) > 0;
 
-    const handleProductView = (producty) => {
+    const handleProductView = (product) => {
         setSelectedViewProduct(product);
         setOpenProductViewModal(true);
     }
@@ -17,17 +17,17 @@ const ProductCard = ({productId, productName, image, description, quantity, pric
         <div className="border rounded-lg shadow-xl overflow-hidden transition-shadow duration-300">
 
             <div onClick={() => {
-                handleProductView ({
-                id: productId, 
-                productName, 
-                image, 
-                description, 
-                quantity, 
-                price, 
-                discount, 
-                specialPrice
-                })
-            }} 
+                    handleProductView ({
+                        id: productId, 
+                        productName, 
+                        image, 
+                        description, 
+                        quantity, 
+                        price, 
+                        discount, 
+                        specialPrice
+                        })
+                    }} 
                  className="w-full overflow-hidden aspect-3/2">
                 <img className="w-full h-full cursor-pointer transition-transform duration-300 transform hover:scale-105"
                      src={image}
@@ -37,17 +37,17 @@ const ProductCard = ({productId, productName, image, description, quantity, pric
 
             <div className="p-4">
                 <h2 onClick={() => {
-                handleProductView ({
-                id: productId, 
-                productName, 
-                image, 
-                description, 
-                quantity, 
-                price, 
-                discount, 
-                specialPrice
-                })
-            }} 
+                    handleProductView ({
+                        id: productId, 
+                        productName, 
+                        image, 
+                        description, 
+                        quantity, 
+                        price, 
+                        discount, 
+                        specialPrice
+                        })
+                    }} 
                 className="text-lg font-semibold mg-2 cursor-pointer">
                 {productName}
                 </h2>
@@ -80,12 +80,13 @@ const ProductCard = ({productId, productName, image, description, quantity, pric
                     disabled= {!isAvailable || btnLoader}
                     onClick={() => {}}
                     className={`bg-blue-500 ${isAvailable ? "opacity-100 hover:bg-blue-600 cursor-pointer" : "opacity-70"}
-                                    text-white py-2 px-3 rounded-lg items-center transition-colors duration-300 w-36 flex justifty-center`}>
+                                text-white py-2 px-3 rounded-lg items-center transition-colors duration-300 w-36 flex justifty-center`}>
                     <FaShoppingCart className="mr-2"/>
                     {isAvailable ? "Add to Cart" : "Stock Out"}
                 </button>
                 
             </div>
+
         </div>
     )
 }
