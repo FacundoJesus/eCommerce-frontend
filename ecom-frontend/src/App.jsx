@@ -1,15 +1,12 @@
-import { FaBeer } from 'react-icons/fa'
 import './App.css'
+import Products from './components/Products'
 
 function App() {
 
   return (
-  <div>
-      <h1 class="text-3xl font-bold underline bg-custom-blue">
-        Hello world! 
-      </h1>
-      <FaBeer />
-  </div>
+  <>
+    <Products />
+  </>
   )
     
 }
