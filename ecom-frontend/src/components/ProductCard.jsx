@@ -70,7 +70,7 @@ const ProductCard = ({productId, productName, image, description, quantity, pric
                             </span>
                         </div>
                     ) : (
-                        <span className="text-gray-400 line-through">
+                        <span className="text-xl font-bold text-slate-700">
                             {" "}
                             ${Number(price).toFixed(2)}
                         </span>

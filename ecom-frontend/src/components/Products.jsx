@@ -14,7 +14,7 @@ const Products = () => {
             quantity: 2,
             price: 1450.0,
             discount: 10.0,
-            specialPrice: 1305.0,
+            specialPrice: 0,
         },
         {
             productId: 654,
