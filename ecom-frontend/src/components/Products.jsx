@@ -1,10 +1,23 @@
 import { FaExclamationTriangle } from "react-icons/fa";
 import ProductCard from "./ProductCard";
+import { useDispatch, useSelector} from "react-redux";
+import { useEffect } from "react";
+import { fetchProducts } from "../store/actions";
 
 const Products = () => {
 
     const isLoading = false;
     const errorMessage = "";
+
+    const {products} = useSelector( (state) => state.products);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchProducts())
+    },[dispatch])
+
+    
+    /*
     const products = [
         {
             productId: 652,
@@ -27,6 +40,7 @@ const Products = () => {
             specialPrice: 2040.0,
         }
     ]
+    */
 
     return(
 
