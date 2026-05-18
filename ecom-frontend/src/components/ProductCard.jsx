@@ -86,13 +86,13 @@ const ProductCard = ({productId, productName, image, description, quantity, pric
                 </div>
 
             </div>
+            
             <ProductViewModal 
                 open={openProductViewModal}
                 setOpen= {setOpenProductViewModal}
                 product = {selectedViewProduct}
                 isAvailable = {isAvailable}
             />
-
 
         </div>
     )
