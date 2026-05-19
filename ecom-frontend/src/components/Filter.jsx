@@ -76,7 +76,7 @@ const Filter = () => {
     }
 
     const handleClearFilter = () => {
-        navigate({pathname : window.location.pathname});
+        navigate({pathname : window.location.pathname}); // http://localhost:3000/
     }
 
     return (

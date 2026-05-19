@@ -16,7 +16,7 @@ const useProductFilter = () => {
             ? Number(searchParams.get("page"))
             : 1;
         
-        params.set("pageNumber", currentPage-1)
+        params.set("pageNumber", currentPage - 1)
 
         const sortOrder = searchParams.get("sortby") || "all";
         const categoryParams = searchParams.get("category") || null;
