@@ -6,11 +6,9 @@ import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 const Filter = () => {
 
     const categories = [
-        {categoryId: 1, categoryName: "Electronics"},
-        {categoryId: 2, categoryName: "Clothing"},
+        {categoryId: 1, categoryName: "Tablets"},
+        {categoryId: 2, categoryName: "Cellphones"},
         {categoryId: 3, categoryName: "Laptops"},
-        {categoryId: 4, categoryName: "Books"},
-        {categoryId: 5, categoryName: "Toys"},
     ];
 
     const [searchParams] = useSearchParams();
