@@ -14,7 +14,7 @@ const Products = () => {
         (state) => state.errors
     );
 
-    const {products, categories} = useSelector( 
+    const {products, categories, pagination} = useSelector( 
         (state) => state.products
     );
     const dispatch = useDispatch();
@@ -42,12 +42,19 @@ const Products = () => {
                     ):(
                         <div className="min-h-175">
                             <div className="pb-6 pt-14 grid 2xl:grtid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-y-6 gap-x-6">
-                            {products && products.map((item,i) => <ProductCard key={i} {...item}/>)}
+                                {products && products.map((item,i) => <ProductCard key={i} {...item}/>)}
                             </div> 
+
+                            <div className="flex justify-center pt-10">
+                                <Paginations 
+                                    numberOfPage = {pagination?.totalPages}
+                                    totalProducts = {pagination?.totalElements}
+                                />
+                            </div>
+                            
                         </div>
                         )}
 
-            <Paginations />
         </div>
     )
 

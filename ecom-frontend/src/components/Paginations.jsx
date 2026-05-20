@@ -1,9 +1,35 @@
 import { Pagination } from "@mui/material";
+import { useLocation, useNavigate, useSearchParams } from "react-router-dom";
 
-const Paginations = () => {
+const Paginations = ({numberOfPage, totalElements}) => {
+
+    const [searchParams] = useSearchParams();
+    const pathname = useLocation().pathname;
+    const params = new URLSearchParams(searchParams);
+    const navigate = useNavigate();
+
+    const paramValue = searchParams.get("page") 
+                        ? Number(searchParams.get("page")) : 1;
+
     
+    const onChangeHandler = (event,value) => {
+        params.set("page", value.toString());
+        navigate(`${pathname}?${params}`)
+    }
+    
+
+
+
     return (
-        <Pagination count={100} defaultPage={50} siblingCount={2}  boundaryCount={1}/>
+        <Pagination 
+            count={numberOfPage} 
+            page={paramValue}
+            defaultPage={1} 
+            siblingCount={0} 
+            boundaryCount={0} 
+            shape="rounded"
+            onChange={onChangeHandler}
+        />
     )
 
 }
