@@ -6,7 +6,7 @@ import useProductFilter from "./useProductFilter";
 import { useEffect } from "react";
 import { fetchCategories } from "../store/actions/ProductActions";
 import Loader from "./Loader";
-import Pagination from "./Pagination";
+import Paginations from "./Paginations";
 
 const Products = () => {
 
@@ -47,7 +47,7 @@ const Products = () => {
                         </div>
                         )}
 
-            <Pagination />
+            <Paginations />
         </div>
     )
 
