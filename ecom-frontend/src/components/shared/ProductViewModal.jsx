@@ -8,10 +8,6 @@ const ProductViewModal = ({open, setOpen, product, isAvailable}) => {
   
   const {id,productName,image,description,quantity,price,discount,specialPrice} = product;
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  }
-
   return (
     <>
       <Dialog open={open} as="div" className="relative z-10" onClose={() => setOpen(false)} __demoMode>
