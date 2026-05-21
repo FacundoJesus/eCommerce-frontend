@@ -41,7 +41,7 @@ const Products = () => {
                     </div>
                     ):(
                         <div className="min-h-175">
-                            <div className="pb-6 pt-14 grid 2xl:grtid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-y-6 gap-x-6">
+                            <div className="pb-6 pt-14 grid 2xl:grid-cols-4 lg:grid-cols-3 sm:grid-cols-2 gap-y-6 gap-x-6">
                                 {products && products.map((item,i) => <ProductCard key={i} {...item}/>)}
                             </div> 
 
@@ -54,7 +54,6 @@ const Products = () => {
                             
                         </div>
                         )}
-
         </div>
     )
 
