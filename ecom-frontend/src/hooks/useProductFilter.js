@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { useSearchParams } from "react-router-dom";
-import { fetchProducts } from "../store/actions/ProductActions";
+import { fetchProducts } from "../store/actions/actions";
 
 // Construir una cadena de consulta para el Back-End
 const useProductFilter = () => {
