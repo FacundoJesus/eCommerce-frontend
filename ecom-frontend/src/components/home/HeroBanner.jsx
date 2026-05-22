@@ -9,8 +9,10 @@ import 'swiper/css/autoplay';
 // Import Swiper React components
 import { Swiper, SwiperSlide } from 'swiper/react';
 import {Autoplay,EffectFade,Navigation,Pagination} from 'swiper/modules'
+
 import { bannerList } from '../../utils';
 import { Link } from 'react-router-dom';
+
 
 const colors = ["bg-banner-color1","bg-banner-color2","bg-banner-color3"]
 
@@ -19,7 +21,7 @@ const HeroBanner = () => {
     return (
         <div className='py-2 rounded-md'>
             <Swiper
-                    grabCursor = {true} //Manito
+                    grabCursor = {true} // Manito
                     autoplay={{
                         delay:4000,
                         disableOnInteraction: false

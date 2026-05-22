@@ -17,6 +17,7 @@ const Products = () => {
     const {products, categories, pagination} = useSelector( 
         (state) => state.products
     );
+    
     const dispatch = useDispatch();
     useProductFilter();
 
