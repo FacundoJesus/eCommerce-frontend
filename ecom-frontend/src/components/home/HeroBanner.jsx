@@ -17,7 +17,7 @@ const colors = ["bg-banner-color1","bg-banner-color2","bg-banner-color3"]
 const HeroBanner = () => {
 
     return (
-        <div className='py-2 round-md'>
+        <div className='py-2 rounded-md'>
             <Swiper
                     grabCursor = {true} //Manito
                     autoplay={{
@@ -47,7 +47,8 @@ const HeroBanner = () => {
                                                 </p>
                                                 <Link
                                                     to='/products' 
-                                                    className='mt-6 inline-block bg-black text-white py-2 px-4 rounded hover:bg-gray-800 transition-colors duration-300 relative z-10'
+                                                     className="mt-6 inline-block bg-[black] text-white py-2 px-4 rounded-md"
+                                                   
                                                 >
                                                     Shop
                                                 </Link>
@@ -55,7 +56,7 @@ const HeroBanner = () => {
                                         </div>
 
                                         <div className='w-full flex justify-center lg:w-1/2 p-4'>
-                                            <img src={item?.image} alt=""></img>
+                                            <img src={item?.image} alt={item?.title}></img>
                                         </div>
                                     </div>
 
