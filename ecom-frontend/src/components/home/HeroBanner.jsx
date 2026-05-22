@@ -47,8 +47,8 @@ const HeroBanner = () => {
                                                 </p>
                                                 <Link
                                                     to='/products' 
-                                                     className="mt-6 inline-block bg-[black] text-white py-2 px-4 rounded-md"
-                                                   
+                                                    className="mt-6 inline-block text-white py-2 px-4 rounded-md"
+                                                    style={{ backgroundColor: "black" }}
                                                 >
                                                     Shop
                                                 </Link>
@@ -62,11 +62,8 @@ const HeroBanner = () => {
 
                                 </div>
                             </SwiperSlide>
-
                         ))}
-                
             </Swiper>
-
         </div>
     )
 }
