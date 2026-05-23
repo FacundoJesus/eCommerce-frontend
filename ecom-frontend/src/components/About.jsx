@@ -1,33 +1,16 @@
+import { useEffect } from "react";
 import ProductCard from "./shared/ProductCard";
-
-const products = [
-    {
-        image: "https://embarkx.com/sample/placeholder.png",
-        productName: "iPhone 13 Pro Max",
-        description:
-          "The iPhone 13 Pro Max offers exceptional performance with its A15 Bionic chip, stunning Super Retina XDR display, and advanced camera features for breathtaking photos.",
-        specialPrice: 720,
-        price: 780,
-      },
-      {
-        image: "https://embarkx.com/sample/placeholder.png",
-        productName: "Samsung Galaxy S21",
-        description:
-          "Experience the brilliance of the Samsung Galaxy S21 with its vibrant AMOLED display, powerful camera, and sleek design that fits perfectly in your hand.",
-        specialPrice: 699,
-        price: 799,
-      },
-      {
-        image: "https://embarkx.com/sample/placeholder.png",
-        productName: "Google Pixel 6",
-        description:
-          "The Google Pixel 6 boasts cutting-edge AI features, exceptional photo quality, and a stunning display, making it a perfect choice for Android enthusiasts.",
-        price: 599,
-        specialPrice: 400,
-      }
-];
+import { fetchProducts } from "../store/actions/actions";
+import { useDispatch, useSelector } from "react-redux";
 
 const About = () => {
+
+    const dispatch = useDispatch();
+    const {products} = useSelector((state) => state.products);
+
+    useEffect(() => {
+            dispatch(fetchProducts());
+        },[dispatch])
 
     return(
         <div className="max-w-7xl mx-auto px-4 py-8">
@@ -46,7 +29,7 @@ const About = () => {
 
                 <div className="w-full md:w-1/2 mb-6 md:mb-0">
                     <img
-                        src="https://embarkx.com/sample/placeholder.png"
+                        src="/src/assets/sliders/about_us.png"
                         alt="About Us"
                         className="w-full h-auto rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
                     </img>
@@ -59,18 +42,9 @@ const About = () => {
                     Our Products
                 </h1>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                    {products.map((product, index) => (
-                        <ProductCard 
-                            key={index}
-                            image={product.image}
-                            productName={product.productName}
-                            description={product.description}
-                            specialPrice={product.specialPrice}
-                            price={product.price}
-                            about
-                        />
-                    ))
-                    }
+                        {products &&
+                            products?.slice(0,3)
+                                     .map((item,i) => <ProductCard key={i} {...item} about/>)}
                 </div>
            </div>
         </div>
