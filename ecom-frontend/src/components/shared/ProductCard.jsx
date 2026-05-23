@@ -11,8 +11,10 @@ const ProductCard = ({productId, productName, image, description, quantity, pric
     const isAvailable = quantity && Number(quantity) > 0;
 
     const handleProductView = (product) => {
-        setSelectedViewProduct(product);
-        setOpenProductViewModal(true);
+        if(!about) {
+            setSelectedViewProduct(product);
+            setOpenProductViewModal(true);
+        }
     }
 
     return (
@@ -27,7 +29,8 @@ const ProductCard = ({productId, productName, image, description, quantity, pric
                         quantity, 
                         price, 
                         discount, 
-                        specialPrice
+                        specialPrice,
+                        about = false
                         })
                     }} 
                  className="w-full overflow-hidden aspect-3/2">
