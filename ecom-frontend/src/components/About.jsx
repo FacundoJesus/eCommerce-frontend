@@ -29,7 +29,7 @@ const About = () => {
 
                 <div className="w-full md:w-1/2 mb-6 md:mb-0">
                     <img
-                        src="/src/assets/sliders/about_us.png"
+                        src="/src/assets/about_us.png"
                         alt="About Us"
                         className="w-full h-auto rounded-lg shadow-lg transform transition-transform duration-300 hover:scale-105">
                     </img>
