@@ -3,7 +3,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import ProductViewModal from "./ProductViewModal";
 import truncateText from "../../utils/truncateText";
 
-const ProductCard = ({productId, productName, image, description, quantity, price, discount, specialPrice}) => {
+const ProductCard = ({productId, productName, image, description, quantity, price, discount, specialPrice, about=false}) => {
     
     const [openProductViewModal, setOpenProductViewModal] = useState(false);
     const btnLoader = false;
@@ -29,8 +29,7 @@ const ProductCard = ({productId, productName, image, description, quantity, pric
                         quantity, 
                         price, 
                         discount, 
-                        specialPrice,
-                        about = false
+                        specialPrice
                         })
                     }} 
                  className="w-full overflow-hidden aspect-3/2">
@@ -63,31 +62,34 @@ const ProductCard = ({productId, productName, image, description, quantity, pric
                     </p>
                 </div>
 
-                <div className="flex items-center justify-between">
-                    {specialPrice ? (
-                        <div className="flex flex-col">
-                            <span className="text-gray-400 line-through">
+                {!about && (
+                    <div className="flex items-center justify-between">
+                        {specialPrice ? (
+                            <div className="flex flex-col">
+                                <span className="text-gray-400 line-through">
+                                    ${Number(price).toFixed(2)}
+                                </span>
+                                <span className="text-xl font-bold text-slate-700">
+                                    ${Number(specialPrice).toFixed(2)}
+                                </span>
+                            </div>
+                        ) : (
+                            <span className="text-xl font-bold text-slate-700">
+                                {" "}
                                 ${Number(price).toFixed(2)}
                             </span>
-                            <span className="text-xl font-bold text-slate-700">
-                                ${Number(specialPrice).toFixed(2)}
-                            </span>
-                        </div>
-                    ) : (
-                        <span className="text-xl font-bold text-slate-700">
-                            {" "}
-                            ${Number(price).toFixed(2)}
-                        </span>
-                    )}
-                    <button 
-                        disabled= {!isAvailable || btnLoader}
-                        onClick={() => {}}
-                        className={`bg-blue-500 ${isAvailable ? "opacity-100 hover:bg-blue-600 cursor-pointer" : "opacity-70"}
-                                    text-white py-2 px-3 rounded-lg items-center transition-colors duration-300 w-36 flex justifty-center`}>
-                        <FaShoppingCart className="mr-2"/>
-                        {isAvailable ? "Add to Cart" : "Stock Out"}
-                    </button>
-                </div>
+                        )}
+                        <button 
+                            disabled= {!isAvailable || btnLoader}
+                            onClick={() => {}}
+                            className={`bg-blue-500 ${isAvailable ? "opacity-100 hover:bg-blue-600 cursor-pointer" : "opacity-70"}
+                                        text-white py-2 px-3 rounded-lg items-center transition-colors duration-300 w-36 flex justifty-center`}>
+                            <FaShoppingCart className="mr-2"/>
+                            {isAvailable ? "Add to Cart" : "Stock Out"}
+                        </button>
+                    </div> )
+                }
+
 
             </div>
             
