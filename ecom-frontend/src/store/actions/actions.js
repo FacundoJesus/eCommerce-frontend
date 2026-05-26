@@ -51,35 +51,32 @@ export const fetchCategories = () => async (dispatch) => {
 }
 
 
-export const addToCart = (data, quantity=1,toast) => 
+export const addToCart = (productToAdd, qty=1,toast) => 
     (dispatch, getState) => {
 
-        // Find the product
+        // Buscar el producto en el store Redux
         const {products} = getState().products;
         const getProduct = products.find(
-            (item) => item.productId === data.productId
+            (item) => item.productId === productToAdd.productId
         )
 
-        // Check for stocks
-        const isQuantityExist = getProduct.quantity >= quantity;
+        // Chequear Stocks
+        const isQuantityExist = getProduct.quantity >=  qty;
 
-        // If in stock -> add
+        // Si hay stock, lo añado
         if(isQuantityExist) {
             dispatch({type:"ADD_CART", 
-                      payload:{...data, quantity: quantity}
+                      payload:{...productToAdd, quantity: qty}
                     });
-            toast.success(`${data?.productName} added tu the Cart`);
+            toast.success(`${productToAdd?.productName} added tu the Cart`);
+            // Guardo el carrito en el navegador
             localStorage.setItem("cartItems", JSON.stringify(getState().carts.cart));
 
         } else {
 
-            //If not -> error
+            // Si no hay stock envio mensaje.
             toast.error(`Out of Stock`);
 
         }
-
-        
-
-
 
 }
