@@ -90,15 +90,15 @@ const ProductCard = ({productId, productName, image, description, quantity, pric
                         )}
                         <button 
                             disabled= {!isAvailable || btnLoader}
-                        onClick={() => addToCartHandler({
-                        image,
-                        productName,
-                        description,
-                        specialPrice,
-                        price,
-                        productId,
-                        quantity,
-                    })}
+                            onClick={() => addToCartHandler({
+                                            image,
+                                            productName,
+                                            description,
+                                            specialPrice,
+                                            price,
+                                            productId,
+                                            quantity,
+                                            })}
                             className={`bg-blue-500 ${isAvailable ? "opacity-100 hover:bg-blue-600 cursor-pointer" : "opacity-70"}
                                         text-white py-2 px-3 rounded-lg items-center transition-colors duration-300 w-36 flex justifty-center`}>
                             <FaShoppingCart className="mr-2"/>
