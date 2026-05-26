@@ -50,14 +50,14 @@ export const fetchCategories = () => async (dispatch) => {
     }
 }
 
-
-export const addToCart = (productToAdd, qty=1,toast) => 
+// Añadir producto al Carrito
+export const addToCart = (data, qty=1,toast) => 
     (dispatch, getState) => {
 
         // Buscar el producto en el store Redux
         const {products} = getState().products;
         const getProduct = products.find(
-            (item) => item.productId === productToAdd.productId
+            (item) => item.productId === data.productId
         )
 
         // Chequear Stocks
@@ -66,9 +66,9 @@ export const addToCart = (productToAdd, qty=1,toast) =>
         // Si hay stock, lo añado
         if(isQuantityExist) {
             dispatch({type:"ADD_CART", 
-                      payload:{...productToAdd, quantity: qty}
+                      payload:{...data, quantity: qty}
                     });
-            toast.success(`${productToAdd?.productName} added tu the Cart`);
+            toast.success(`${data?.productName} added tu the Cart`);
             // Guardo el carrito en el navegador
             localStorage.setItem("cartItems", JSON.stringify(getState().carts.cart));
 
@@ -82,6 +82,7 @@ export const addToCart = (productToAdd, qty=1,toast) =>
 
 }
 
+// Incrementar la cantidad del producto del Carrito
 export const increaseCartQuantity = 
     (data, toast, currentQuantity, setCurrentQuantity) =>
     (dispatch, getState) => {
@@ -100,9 +101,12 @@ export const increaseCartQuantity =
 
             dispatch({
                 type: "ADD_CART",
-                payload: {...data, quantity: newQuantity + 1 },
+                payload: {...data, 
+                          quantity: newQuantity + 1 
+                        }
             });
             localStorage.setItem("cartItems", JSON.stringify(getState().carts.cart));
+
         } else {
             toast.error("Quantity Reached to Limit");
         }
@@ -110,7 +114,7 @@ export const increaseCartQuantity =
     };
 
 
-
+// Decrementar cantidad del producto del carrito.
 export const decreaseCartQuantity = 
     (data, newQuantity) => (dispatch, getState) => {
         dispatch({
@@ -120,6 +124,7 @@ export const decreaseCartQuantity =
         localStorage.setItem("cartItems", JSON.stringify(getState().carts.cart));
     }
 
+// Remover Producto del Carrito.
 export const removeFromCart =  (data, toast) => (dispatch, getState) => {
     dispatch({type: "REMOVE_CART", payload: data });
     toast.success(`${data.productName} removed from cart`);
