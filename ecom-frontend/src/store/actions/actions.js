@@ -55,7 +55,7 @@ export const addToCart = (data, quantity=1) =>
     (dispatch, getState) => {
 
         // Find the product
-        const {products} = getState.products;
+        const {products} = getState().products;
         const getProduct = products.find(
             (item) => item.productId === data.productId
         )
