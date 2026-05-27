@@ -8,5 +8,3 @@ export const truncateText = (text, charsLimit = 90) => {
 
     return textFinal;
 }
-
-export default truncateText;
