@@ -11,8 +11,7 @@ const Cart = () => {
     const newCart = { ...cart };
 
     newCart.totalPrice = cart?.reduce(
-        (acc, cur) => acc + Number(cur?.specialPrice) * Number(cur?.quantity), 0
-    );
+        (acumulado, actual) => acumulado + (Number(actual?.specialPrice) * Number(actual?.quantity)), 0);
 
     if (!cart || cart.length === 0) return <CartEmpty />;
 

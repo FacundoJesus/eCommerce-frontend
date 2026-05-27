@@ -1,4 +1,4 @@
-export const truncateText = (text, charsLimit = 90) => {
+const truncateText = (text, charsLimit = 90) => {
 
     let textFinal = text;
 
@@ -8,3 +8,5 @@ export const truncateText = (text, charsLimit = 90) => {
 
     return textFinal;
 }
+
+export default truncateText;
