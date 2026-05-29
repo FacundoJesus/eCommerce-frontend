@@ -1,3 +1,5 @@
+// Componente de entrada que se adapta a mis necesidades
+
 const InputField = ({
     label,
     id,
@@ -57,7 +59,7 @@ const InputField = ({
 
         </div>
     )
-    
+
 }
 
 export default InputField;
