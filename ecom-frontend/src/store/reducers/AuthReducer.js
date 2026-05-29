@@ -1,4 +1,4 @@
-/*
+
 const initialState = {
     user:null,
     address: [],
@@ -8,4 +8,3 @@ const initialState = {
 export const authReducer = (state=initialState, action) => {
     return state;
 }
-*/
