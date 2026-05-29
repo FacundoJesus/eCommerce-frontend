@@ -6,7 +6,7 @@ import InputField from '../shared/InputField';
 import { useDispatch } from 'react-redux';
 import { registerNewUser } from '../../store/actions';
 import toast from 'react-hot-toast';
-import Spinners from '../shared/Spinners';
+import Spinners from '../shared/Spinners.jsx';
 
 const Register = () => {
     const navigate = useNavigate();
