@@ -54,8 +54,10 @@ const InputField = ({
                         {errors[id]?.message}
                     </p>
                 )}
+
         </div>
-    );
-};
+    )
+    
+}
 
 export default InputField;
