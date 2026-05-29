@@ -135,13 +135,15 @@ export const removeFromCart =
 
 
 
-
+// Autenticacion de inicio de sesion - usuario
 export const authenticateSignInUser 
     = (sendData, toast, reset, navigate, setLoader) => async (dispatch) => {
         try {
             setLoader(true);
             const { data } = await api.post("/auth/signin", sendData);
-            dispatch({ type: "LOGIN_USER", payload: data });
+            dispatch({ type: "LOGIN_USER", 
+                       payload: data 
+                    });
             localStorage.setItem("auth", JSON.stringify(data));
             reset();
             toast.success("Login Success");
