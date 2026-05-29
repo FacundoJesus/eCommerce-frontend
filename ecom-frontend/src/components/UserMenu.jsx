@@ -45,7 +45,7 @@ const UserMenu = () => {
           onClose={handleClose}
           MenuListProps={{
             'aria-labelledby': 'basic-button',
-            sx: {width: 160},
+             sx: {width: 160},
           }}
         >
 
