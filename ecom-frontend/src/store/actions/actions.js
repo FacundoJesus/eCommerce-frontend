@@ -173,7 +173,7 @@ export const registerNewUser
         }
 };
 
-
+// Cierre de Sesion
 export const logOutUser = (navigate) => (dispatch) => {
     dispatch({ type:"LOG_OUT" });
     localStorage.removeItem("auth");
