@@ -158,7 +158,7 @@ export const authenticateSignInUser
 
 // Registro de nuevo usuario
 export const registerNewUser 
-    = (sendData, toast, reset, navigate, setLoader) => async (dispatch) => {
+    = (sendData, toast, reset, navigate, setLoader) => async (/*dispatch*/) => {
         try {
             setLoader(true);
             const { data } = await api.post("/auth/signup", sendData);
@@ -181,7 +181,7 @@ export const logOutUser = (navigate) => (dispatch) => {
 };
 
 export const addUpdateUserAddress =
-     (sendData, toast, addressId, setOpenAddressModal) => async (dispatch, getState) => {
+     (sendData, toast, addressId, setOpenAddressModal) => async (dispatch, /*getState*/) => {
     /*
     const { user } = getState().auth;
     await api.post(`/addresses`, sendData, {
@@ -191,11 +191,11 @@ export const addUpdateUserAddress =
     dispatch({ type:"BUTTON_LOADER" });
     try {
         if (!addressId) {
-            const { data } = await api.post("/addresses", sendData);
+           /* const { data } = await api.post("/addresses", sendData);*/
         } else {
             await api.put(`/addresses/${addressId}`, sendData);
         }
-        dispatch(getUserAddresses());
+        /*dispatch(getUserAddresses());*/
         toast.success("Address saved successfully");
         dispatch({ type:"IS_SUCCESS" });
     } catch (error) {
