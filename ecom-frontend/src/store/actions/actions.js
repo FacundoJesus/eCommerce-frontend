@@ -156,7 +156,7 @@ export const authenticateSignInUser
         }
 }
 
-
+// Registro de nuevo usuario
 export const registerNewUser 
     = (sendData, toast, reset, navigate, setLoader) => async (dispatch) => {
         try {
