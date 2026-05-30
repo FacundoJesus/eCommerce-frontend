@@ -4,7 +4,7 @@ import { FaUserPlus } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import InputField from '../shared/InputField';
 import { useDispatch } from 'react-redux';
-import { registerNewUser } from '../../store/actions';
+import { registerNewUser } from '../../store/actions/actions.js';
 import toast from 'react-hot-toast';
 import Spinners from '../shared/Spinners.jsx';
 
@@ -39,7 +39,7 @@ const Register = () => {
                         </h1>
                     </div>
             <hr className="mt-2 mb-5 text-black" />
-            <div className="flex flex-col gap-3">
+            <div className="flex flex-col gap-3 mb-6">
                 <InputField
                     label="UserName"
                     required
@@ -77,7 +77,7 @@ const Register = () => {
 
             <button
                 disabled={loader}
-                className="bg-button-gradient flex gap-2 items-center justify-center font-semibold text-white w-full py-2 hover:text-slate-400 transition-colors duration-100 rounded-xs my-3"
+                className="cursor-pointer bg-button-gradient flex gap-2 items-center justify-center font-semibold text-white w-full py-2 hover:text-slate-400 transition-colors duration-100 rounded-xs my-3"
                 type="submit">
                 {loader ? (
                     <>
@@ -93,7 +93,8 @@ const Register = () => {
               <Link
                 className="font-semibold underline hover:text-black"
                 to="/login">
-              <span> Login</span></Link>  
+                <span> Login</span>
+              </Link>  
             </p>
             </form>
         </div>

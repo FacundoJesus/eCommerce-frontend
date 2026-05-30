@@ -10,7 +10,7 @@ import React from 'react';
 import Cart from './components/cart/Cart'
 import LogIn from './components/auth/Login'
 import PrivateRoute from './components/PrivateRoute'
-
+import Register from './components/auth/Register'
 
 function App() {
 
@@ -28,6 +28,7 @@ function App() {
             {/* Páginas públicas */}
             <Route path='/' element= {<PrivateRoute publicPage/>}>
               <Route path='/login' element={<LogIn/>}/>
+              <Route path='/register' element={<Register/>}/>
             </Route>
 
           </Routes>
