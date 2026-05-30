@@ -13,11 +13,11 @@ const cartItems = localStorage.getItem("cartItems")
                     : [];
 
 const initialState= {
-    auth: {user:user},
+    auth: {user: user},
     carts: {cart: cartItems},
 }
 
-export const store = configureStore({
+const store = configureStore({
     reducer: {
         products: productReducer,
         errors: errorReducer,
