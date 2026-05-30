@@ -87,6 +87,7 @@ const LogIn = () => {
                     <span> SignUp</span>
                 </Link>  
                 </p>
+                
             </form>
 
         </div>
