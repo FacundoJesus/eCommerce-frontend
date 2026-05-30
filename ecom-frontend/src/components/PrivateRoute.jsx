@@ -9,7 +9,7 @@ const PrivateRoute = ({publicPage=false}) => {
     //Lógica para páginas publicas
     if(publicPage) {
         return user ?
-                <Navigate to="/profile" /> : <Outlet />
+                <Navigate to="/" /> : <Outlet />
     }
 
 
