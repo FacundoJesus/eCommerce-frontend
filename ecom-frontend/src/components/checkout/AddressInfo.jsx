@@ -11,9 +11,11 @@ import { deleteUserAddress } from '../../store/actions/actions';
 import { useState } from 'react';
 
 const AddressInfo = ({ address }) => {
+
     const [openAddressModal, setOpenAddressModal] = useState(false);
     const [openDeleteModal, setOpenDeleteModal] = useState(false);
     const [selectedAddress, setSelectedAddress] = useState("");
+
     const addNewAddressHandler = () => {
         setSelectedAddress("");
         setOpenAddressModal(true);
@@ -31,6 +33,7 @@ const AddressInfo = ({ address }) => {
 
     const noAddressExist = !address || address.length === 0;
     const { isLoading, btnLoader } = useSelector((state) => state.errors);
+
   return (
     <div className='pt-4'>
         {noAddressExist ? (
@@ -45,7 +48,7 @@ const AddressInfo = ({ address }) => {
 
                 <button
                     onClick={addNewAddressHandler}
-                    className='px-4 py-2 bg-blue-600 text-white font-medium rounded-sm hover:bg-blue-700 transition-all'>
+                    className='cursor-pointer px-4 py-2 bg-blue-600 text-white font-medium rounded-sm hover:bg-blue-700 transition-all'>
                     Add Address
                 </button>
             </div>

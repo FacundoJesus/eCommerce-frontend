@@ -52,7 +52,9 @@ const CheckOut = () => {
         dispatch(getUserAddresses());
     }, [dispatch]);
 
+
   return (
+
     <div className='py-14 min-h-[calc(100vh-100px)]'>
         <Stepper activeStep={activeStep} alternativeLabel>
             {steps.map((label, index) => (
@@ -123,7 +125,9 @@ const CheckOut = () => {
         
         {errorMessage && <ErrorPage message={errorMessage} />}
     </div>
-  );
+
+  )
+
 }
 
 export default CheckOut;

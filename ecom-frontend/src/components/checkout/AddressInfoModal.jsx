@@ -2,7 +2,9 @@ import { Dialog, DialogBackdrop, DialogPanel } from '@headlessui/react';
 import { FaTimes } from 'react-icons/fa';
 
 const AddressInfoModal = ({ open, setOpen, children }) => {
+
   return (
+    
     <Dialog open={open} onClose={() => setOpen(false)} className="relative z-50">
         {/* The backdrop, rendered as a fixed sibling to the panel container */}
         <DialogBackdrop className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
@@ -22,7 +24,8 @@ const AddressInfoModal = ({ open, setOpen, children }) => {
           </DialogPanel>
         </div>
       </Dialog>
-  );
+  )
+
 }
 
-export default AddressInfoModal
+export default AddressInfoModal;
