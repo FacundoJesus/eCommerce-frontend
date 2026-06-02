@@ -1,6 +1,6 @@
 import { FormControl, FormControlLabel, Radio, RadioGroup } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
-import { addPaymentMethod, createUserCart } from '../../store/actions';
+import { addPaymentMethod, createUserCart } from '../../store/actions/actions';
 import { useEffect } from 'react';
 
 const PaymentMethod = () => {
