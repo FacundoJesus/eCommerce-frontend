@@ -91,6 +91,7 @@ const AddressInfo = ({ address }) => {
         <AddressInfoModal
             open={openAddressModal}
             setOpen={setOpenAddressModal}>
+                {/*children*/}
                 <AddAddressForm 
                     address={selectedAddress}
                     setOpenAddressModal={setOpenAddressModal}/>
@@ -103,8 +104,11 @@ const AddressInfo = ({ address }) => {
             title="Delete Address"
             onDeleteHandler={deleteAddressHandler}
         />
+
     </div>
+
   )
+
 }
 
 export default AddressInfo;

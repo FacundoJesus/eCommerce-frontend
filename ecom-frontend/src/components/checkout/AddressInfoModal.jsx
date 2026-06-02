@@ -18,12 +18,13 @@ const AddressInfoModal = ({ open, setOpen, children }) => {
             </div>
             <div className='flex justify-end gap-4 absolute right-4 top-2'>
                 <button onClick={() => setOpen(false)} type='button'>
-                    <FaTimes className='text-slate-700' size={25} />
+                    <FaTimes className='cursor-pointer text-slate-700' size={25} />
                 </button>
             </div>
           </DialogPanel>
         </div>
-      </Dialog>
+
+    </Dialog>
   )
 
 }
