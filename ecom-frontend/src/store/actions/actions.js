@@ -181,38 +181,53 @@ export const logOutUser = (navigate) => (dispatch) => {
 };
 
 
-
+// Agregar o Actualizar Dirección del Usuario
 export const addUpdateUserAddress =
-     (sendData, toast, addressId, setOpenAddressModal) => async (dispatch /*getState*/) => {
-    /*
-    const { user } = getState().auth;
-    
-    await api.post(`/addresses`, sendData, {
-          headers: { Authorization: "Bearer " + user.jwtToken },
-        });
-    */
+     (sendData, toast, addressId, setOpenAddressModal) => async (dispatch) => {
+
     dispatch({ type:"BUTTON_LOADER" });
 
     try {
         if (!addressId) {
-           /* const { data } = await api.post("/addresses", sendData);*/
+            await api.post("/addresses", sendData);
         } else {
             await api.put(`/addresses/${addressId}`, sendData);
         }
-        /*dispatch(getUserAddresses());*/
+
+        dispatch(getUserAddresses());
+
         toast.success("Address saved successfully");
-        dispatch({ type:"IS_SUCCESS" });
+        dispatch({ type: "IS_SUCCESS" });
+
     } catch (error) {
         console.log(error);
         toast.error(error?.response?.data?.message || "Internal Server Error");
-        dispatch({ type:"IS_ERROR", payload: null });
+        dispatch({ type: "IS_ERROR", payload: null });
     } finally {
-        setOpenAddressModal(false);
+            setOpenAddressModal(false);
+        }
+    };
+
+
+// Obtener Direcciones del Usuario
+export const getUserAddresses = () => async (dispatch) => {
+    try {
+        dispatch({ type: "IS_FETCHING" });
+        const { data } = await api.get(`/addresses`);
+        dispatch({type: "USER_ADDRESS", payload: data});
+        dispatch({ type: "IS_SUCCESS" });
+    } catch (error) {
+        console.log(error);
+        dispatch({ 
+            type: "IS_ERROR",
+            payload: error?.response?.data?.message || "Failed to fetch user addresses",
+         });
     }
 };
 
+
 export const deleteUserAddress = 
-    (toast, addressId, setOpenDeleteModal) => async (dispatch, getState) => {
+    (toast, addressId, setOpenDeleteModal) => async (dispatch) => {
     try {
         dispatch({ type: "BUTTON_LOADER" });
         await api.delete(`/addresses/${addressId}`);
@@ -237,21 +252,6 @@ export const clearCheckoutAddress = () => {
     }
 };
 
-export const getUserAddresses = () => async (dispatch, getState) => {
-    try {
-        dispatch({ type: "IS_FETCHING" });
-        const { data } = await api.get(`/addresses`);
-        dispatch({type: "USER_ADDRESS", payload: data});
-        dispatch({ type: "IS_SUCCESS" });
-    } catch (error) {
-        console.log(error);
-        dispatch({ 
-            type: "IS_ERROR",
-            payload: error?.response?.data?.message || "Failed to fetch user addresses",
-         });
-    }
-};
-
 export const selectUserCheckoutAddress = (address) => {
     localStorage.setItem("CHECKOUT_ADDRESS", JSON.stringify(address));
     
@@ -270,7 +270,7 @@ export const addPaymentMethod = (method) => {
 };
 
 
-export const createUserCart = (sendCartItems) => async (dispatch, getState) => {
+export const createUserCart = (sendCartItems) => async (dispatch) => {
     try {
         dispatch({ type: "IS_FETCHING" });
         await api.post('/cart/create', sendCartItems);
@@ -309,7 +309,7 @@ export const getUserCart = () => async (dispatch, getState) => {
 
 
 export const createStripePaymentSecret 
-    = (sendData,toast) => async (dispatch, getState) => {
+    = (sendData,toast) => async (dispatch) => {
         try {
             dispatch({ type: "IS_FETCHING" });
             const { data } = await api.post("/order/stripe-client-secret", sendData);
@@ -324,7 +324,7 @@ export const createStripePaymentSecret
 
 
 export const stripePaymentConfirmation 
-    = (sendData, setErrorMesssage, setLoadng, toast) => async (dispatch, getState) => {
+    = (sendData, setErrorMesssage, setLoadng, toast) => async (dispatch) => {
         try {
             const response  = await api.post("/order/users/payments/online", sendData);
             if (response.data) {
@@ -338,11 +338,12 @@ export const stripePaymentConfirmation
                 setErrorMesssage("Payment Failed. Please try again.");
               }
         } catch (error) {
+            console.log(error);
             setErrorMesssage("Payment Failed. Please try again.");
         }
 };
 
-export const analyticsAction = () => async (dispatch, getState) => {
+export const analyticsAction = () => async (dispatch) => {
         try {
             dispatch({ type: "IS_FETCHING"});
             const { data } = await api.get('/admin/app/analytics');
@@ -386,7 +387,7 @@ export const getOrdersForDashboard = (queryString, isAdmin) => async (dispatch) 
 
 
 export const updateOrderStatusFromDashboard =
-     (orderId, orderStatus, toast, setLoader, isAdmin) => async (dispatch, getState) => {
+     (orderId, orderStatus, toast, setLoader, isAdmin) => async (dispatch) => {
     try {
         setLoader(true);
         const endpoint = isAdmin ? "/admin/orders/" : "/seller/orders/";
@@ -447,7 +448,7 @@ export const updateProductFromDashboard =
 
 
 export const addNewProductFromDashboard = 
-    (sendData, toast, reset, setLoader, setOpen, isAdmin) => async(dispatch, getState) => {
+    (sendData, toast, reset, setLoader, setOpen, isAdmin) => async(dispatch) => {
         try {
             setLoader(true);
             const endpoint = isAdmin ? "/admin/categories/" : "/seller/categories/";
@@ -467,7 +468,7 @@ export const addNewProductFromDashboard =
     }
 
 export const deleteProduct = 
-    (setLoader, productId, toast, setOpenDeleteModal, isAdmin) => async (dispatch, getState) => {
+    (setLoader, productId, toast, setOpenDeleteModal, isAdmin) => async (dispatch) => {
     try {
         setLoader(true)
         const endpoint = isAdmin ? "/admin/products/" : "/seller/products/";
@@ -527,7 +528,7 @@ export const getAllCategoriesDashboard = (queryString) => async (dispatch) => {
 };
 
 export const createCategoryDashboardAction =
-  (sendData, setOpen, reset, toast) => async (dispatch, getState) => {
+  (sendData, setOpen, reset, toast) => async (dispatch) => {
     try {
       dispatch({ type: "CATEGORY_LOADER" });
       await api.post("/admin/categories", sendData);
@@ -551,7 +552,7 @@ export const createCategoryDashboardAction =
 
 export const updateCategoryDashboardAction =
   (sendData, setOpen, categoryID, reset, toast) =>
-  async (dispatch, getState) => {
+  async (dispatch) => {
     try {
       dispatch({ type: "CATEGORY_LOADER" });
 
@@ -577,7 +578,7 @@ export const updateCategoryDashboardAction =
   };
 
 export const deleteCategoryDashboardAction =
-  (setOpen, categoryID, toast) => async (dispatch, getState) => {
+  (setOpen, categoryID, toast) => async (dispatch) => {
     try {
       dispatch({ type: "CATEGORY_LOADER" });
 
