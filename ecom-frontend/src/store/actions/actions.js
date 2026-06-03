@@ -193,7 +193,8 @@ export const addUpdateUserAddress =
         } else {
             await api.put(`/addresses/${addressId}`, sendData);
         }
-
+        
+        //Actualizo la vista de direcciones
         dispatch(getUserAddresses());
 
         toast.success("Address saved successfully");
