@@ -16,12 +16,15 @@ const CheckOut = () => {
 
     const [activeStep, setActiveStep] = useState(0);
     const dispatch = useDispatch();
-    const { isLoading, errorMessage } = useSelector((state) => state.errors);
-    const { cart, totalPrice } = useSelector((state) => state.carts);
+
+    const { isLoading, errorMessage } = useSelector(
+        (state) => state.errors);
+    const { cart, totalPrice } = useSelector(
+        (state) => state.carts);
     const { address, selectedUserCheckoutAddress } = useSelector(
-        (state) => state.auth
-    )
-    const { paymentMethod } = useSelector((state) => state.payment);
+        (state) => state.auth);
+    const { paymentMethod } = useSelector(
+        (state) => state.payment);
 
     const handleBack = () => {
         setActiveStep((prevStep) => prevStep - 1);
@@ -109,7 +112,7 @@ const CheckOut = () => {
                             )
                         )
                     }
-                    className={`bg-custom-blue font-semibold px-6 h-10 rounded-md text-white
+                    className={`cursor-pointer hover:bg-blue-500 duration-150 transition-all bg-custom-blue font-semibold px-6 h-10 rounded-md text-white
                        ${
                         errorMessage ||
                         (activeStep === 0 && !selectedUserCheckoutAddress) ||

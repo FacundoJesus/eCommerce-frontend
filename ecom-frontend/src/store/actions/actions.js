@@ -225,6 +225,16 @@ export const getUserAddresses = () => async (dispatch) => {
     }
 };
 
+// Seleccion de Dirección en CheckOut
+export const selectUserCheckoutAddress = (address) => {
+    localStorage.setItem("CHECKOUT_ADDRESS", JSON.stringify(address));
+    
+    return {
+        type: "SELECT_CHECKOUT_ADDRESS",
+        payload: address,
+    }
+};
+
 
 export const deleteUserAddress = 
     (toast, addressId, setOpenDeleteModal) => async (dispatch) => {
@@ -252,14 +262,7 @@ export const clearCheckoutAddress = () => {
     }
 };
 
-export const selectUserCheckoutAddress = (address) => {
-    localStorage.setItem("CHECKOUT_ADDRESS", JSON.stringify(address));
-    
-    return {
-        type: "SELECT_CHECKOUT_ADDRESS",
-        payload: address,
-    }
-};
+
 
 
 export const addPaymentMethod = (method) => {

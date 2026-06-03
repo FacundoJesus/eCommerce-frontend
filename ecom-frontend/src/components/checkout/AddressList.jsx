@@ -1,12 +1,13 @@
-
 import { FaBuilding, FaCheckCircle, FaEdit, FaStreetView, FaTrash } from 'react-icons/fa';
 import { MdLocationCity, MdPinDrop, MdPublic } from "react-icons/md";
 import { useDispatch, useSelector } from 'react-redux'
 import { selectUserCheckoutAddress } from '../../store/actions/actions';
 
 const AddressList = ({ addresses, setSelectedAddress, setOpenAddressModal, setOpenDeleteModal }) => {
+
     const dispatch = useDispatch();
-    const { selectedUserCheckoutAddress } = useSelector((state) => state.auth);
+    const { selectedUserCheckoutAddress } = useSelector(
+        (state) => state.auth);
 
     const onEditButtonHandler = (addresses) => {
         setSelectedAddress(addresses);
@@ -30,7 +31,7 @@ const AddressList = ({ addresses, setSelectedAddress, setOpenAddressModal, setOp
                 onClick={() => handleAddressSelection(address)}
                 className={`p-4 border rounded-md cursor-pointer relative ${
                     selectedUserCheckoutAddress?.addressId === address.addressId
-                    ? "bg-green-100"
+                    ? "bg-green-200"
                     : "bg-white"
                 }`}>
                 <div className="flex items-start">
@@ -67,7 +68,7 @@ const AddressList = ({ addresses, setSelectedAddress, setOpenAddressModal, setOp
 
 
                 <div className="flex gap-3 absolute top-4 right-2">
-                    <button onClick={() => onEditButtonHandler(address)}>
+                    <button onClick={() => onEditButtonHandler(address)} className='cursor-'>
                         <FaEdit size={18} className="text-teal-700" />
                     </button>
                     <button onClick={() => onDeleteButtonHandler(address)}>

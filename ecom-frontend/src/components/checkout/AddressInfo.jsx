@@ -32,7 +32,8 @@ const AddressInfo = ({ address }) => {
     };
 
     const noAddressExist = !address || address.length === 0;
-    const { isLoading, btnLoader } = useSelector((state) => state.errors);
+    const { isLoading, btnLoader } = useSelector(
+        (state) => state.errors);
 
   return (
     <div className='pt-4'>
