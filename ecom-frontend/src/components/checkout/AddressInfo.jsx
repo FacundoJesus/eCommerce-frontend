@@ -70,14 +70,14 @@ const AddressInfo = ({ address }) => {
                         setSelectedAddress={setSelectedAddress}
                         setOpenAddressModal={setOpenAddressModal}
                         setOpenDeleteModal={setOpenDeleteModal}
-                        />
+                    />
                 </div>
 
                 {address.length > 0 && (
                     <div className='mt-4'>
                         <button 
                             onClick={addNewAddressHandler}
-                            className='px-4 py-2 bg-blue-600 text-white font-medium rounded-sm hover:bg-blue-700 transition-all'>
+                            className='cursor-pointer px-4 py-2 bg-blue-600 text-white font-medium rounded-sm hover:bg-blue-700 transition-all'>
                                 Add More
                         </button>
                     </div>
