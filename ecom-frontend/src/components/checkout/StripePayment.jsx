@@ -1,4 +1,4 @@
-import { Alert, AlertTitle, Skeleton } from '@mui/material'
+import { Skeleton } from '@mui/material'
 import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { useEffect } from 'react'
@@ -39,7 +39,6 @@ const StripePayment = () => {
       </div>
     )
   }
-
 
   return (
     <>

@@ -236,7 +236,7 @@ export const selectUserCheckoutAddress = (address) => {
     }
 };
 
-
+// Borrar direccion del usuario logueado
 export const deleteUserAddress = 
     (toast, addressId, setOpenDeleteModal) => async (dispatch) => {
     try {
@@ -263,7 +263,7 @@ export const clearCheckoutAddress = () => {
     }
 };
 
-
+// Agregar metodo de pago
 export const addPaymentMethod = (method) => {
     return {
         type: "ADD_PAYMENT_METHOD",
@@ -271,7 +271,7 @@ export const addPaymentMethod = (method) => {
     }
 };
 
-
+// Crear carrito
 export const createUserCart = (sendCartItems) => async (dispatch) => {
     try {
         dispatch({ type: "IS_FETCHING" });
@@ -286,7 +286,7 @@ export const createUserCart = (sendCartItems) => async (dispatch) => {
     }
 };
 
-
+// Obtener Carrito
 export const getUserCart = () => async (dispatch, getState) => {
     try {
         dispatch({ type: "IS_FETCHING" });

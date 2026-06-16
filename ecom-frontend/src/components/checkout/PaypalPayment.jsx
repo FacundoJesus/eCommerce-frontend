@@ -1,6 +1,5 @@
 import { Alert, AlertTitle } from '@mui/material'
 
-
 const PaypalPayment = () => {
   return (
     <div className='h-96 flex justify-center items-center'>
