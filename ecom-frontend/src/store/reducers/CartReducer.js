@@ -36,7 +36,6 @@ export const cartReducer = (state = initialState, action) => {
             }  
         }
 
-       
         case "REMOVE_CART":
             return {
                 ...state,
@@ -44,7 +43,6 @@ export const cartReducer = (state = initialState, action) => {
                     (item) => item.productId !== action.payload.productId
                 ),
             };
-
 
         case "GET_USER_CART_PRODUCTS":
             return {

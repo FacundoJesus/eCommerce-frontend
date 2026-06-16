@@ -4,10 +4,17 @@ import { addPaymentMethod, createUserCart } from '../../store/actions/actions';
 import { useEffect } from 'react';
 
 const PaymentMethod = () => {
+    
     const dispatch = useDispatch();
-    const { paymentMethod } = useSelector((state) => state.payment);
-    const { cart, cartId } = useSelector((state) => state.carts);
-    const { isLoading, errorMessage } = useSelector((state) => state.errors);
+
+    const { paymentMethod } = useSelector(
+        (state) => state.payment);
+
+    const { cart, cartId } = useSelector(
+        (state) => state.carts);
+
+    const { isLoading, errorMessage } = useSelector(
+        (state) => state.errors);
 
     useEffect(() => {
         if (cart.length > 0 && !cartId && !errorMessage) {
@@ -25,6 +32,7 @@ const PaymentMethod = () => {
     const paymentMethodHandler = (method) => {
         dispatch(addPaymentMethod(method));
     }
+
   return (
     <div className='max-w-md mx-auto p-5 bg-white shadow-md rounded-lg mt-16 border'>
         <h1 className='text-2xl font-semibold mb-4'>Select Payment Method</h1>

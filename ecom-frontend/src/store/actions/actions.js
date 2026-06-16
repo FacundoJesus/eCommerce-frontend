@@ -248,10 +248,7 @@ export const deleteUserAddress =
         dispatch(clearCheckoutAddress());
         toast.success("Address deleted successfully");
     } catch (error) {
-        console.log("Status:", error.response?.status);
-        console.log("Data:", error.response?.data);
-        console.log("Headers:", error.response?.headers);
-
+        console.log(error);
         dispatch({
             type: "IS_ERROR",
             payload: error?.response?.data?.message || "Some Error Occured",
@@ -260,14 +257,11 @@ export const deleteUserAddress =
         setOpenDeleteModal(false);
     }
 };
-
 export const clearCheckoutAddress = () => {
     return {
         type: "REMOVE_CHECKOUT_ADDRESS",
     }
 };
-
-
 
 
 export const addPaymentMethod = (method) => {
