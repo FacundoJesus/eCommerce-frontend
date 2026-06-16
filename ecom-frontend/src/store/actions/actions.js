@@ -244,14 +244,18 @@ export const deleteUserAddress =
         await api.delete(`/addresses/${addressId}`);
         dispatch({ type: "IS_SUCCESS" });
         dispatch(getUserAddresses());
+
         dispatch(clearCheckoutAddress());
         toast.success("Address deleted successfully");
     } catch (error) {
-        console.log(error);
-        dispatch({ 
+        console.log("Status:", error.response?.status);
+        console.log("Data:", error.response?.data);
+        console.log("Headers:", error.response?.headers);
+
+        dispatch({
             type: "IS_ERROR",
             payload: error?.response?.data?.message || "Some Error Occured",
-         });
+        });
     } finally {
         setOpenDeleteModal(false);
     }
