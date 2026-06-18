@@ -309,22 +309,23 @@ export const getUserCart = () => async (dispatch, getState) => {
     }
 };
 
-
-export const createStripePaymentSecret 
-    = (sendData,toast) => async (dispatch) => {
+// CREAR CLAVE SECRETA DE PAGO
+export const createStripePaymentSecret = (sendData,toast) => async (dispatch) => {
         try {
             dispatch({ type: "IS_FETCHING" });
             const { data } = await api.post("/order/stripe-client-secret", sendData);
+
             dispatch({ type: "CLIENT_SECRET", payload: data });
-              localStorage.setItem("client-secret", JSON.stringify(data));
-              dispatch({ type: "IS_SUCCESS" });
+            localStorage.setItem("client-secret", JSON.stringify(data));
+            dispatch({ type: "IS_SUCCESS" });
+
         } catch (error) {
             console.log(error);
             toast.error(error?.response?.data?.message || "Failed to create client secret");
         }
 };
 
-
+// CREAR CONFIRACION DE PAGO
 export const stripePaymentConfirmation 
     = (sendData, setErrorMesssage, setLoadng, toast) => async (dispatch) => {
         try {
@@ -339,6 +340,7 @@ export const stripePaymentConfirmation
               } else {
                 setErrorMesssage("Payment Failed. Please try again.");
               }
+              
         } catch (error) {
             console.log(error);
             setErrorMesssage("Payment Failed. Please try again.");

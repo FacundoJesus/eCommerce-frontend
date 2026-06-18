@@ -10,7 +10,7 @@ const PaymentConfirmation = () => {
     const location = useLocation();
     const searchParams = new URLSearchParams(location.search);
     const dispatch = useDispatch();
-    const  [errorMessage, setErrorMessage ] = useState("");
+    const [errorMessage, setErrorMessage ] = useState("");
     const { cart } = useSelector((state) => state.carts);
     const [ loading, setLoading] = useState(false);
 
@@ -36,7 +36,7 @@ const PaymentConfirmation = () => {
                 pgStatus: "succeeded",
                 pgResponseMessage: "Payment successful"
               };
-              console.log(sendData);
+            console.log(sendData);
             dispatch(stripePaymentConfirmation(sendData, setErrorMessage, setLoading, toast));
         }
     }, [paymentIntent, clientSecret, redirectStatus, cart]);

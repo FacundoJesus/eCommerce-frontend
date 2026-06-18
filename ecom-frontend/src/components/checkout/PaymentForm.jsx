@@ -15,6 +15,7 @@ const PaymentForm = ({ clientSecret, totalPrice }) => {
 
         const { error: submitError } = await elements.submit();
 
+        //Toma los datos y redirige a la pagina /order-confirm
         const { error } = await stripe.confirmPayment({
             elements,
             clientSecret,
@@ -42,7 +43,7 @@ const PaymentForm = ({ clientSecret, totalPrice }) => {
             <Skeleton />
         ) : (
             <>
-            {clientSecret && <PaymentElement  options={paymentElementOptions}/> }
+            {clientSecret && <PaymentElement options={paymentElementOptions}/> }
             {errorMessage && (
                 <div className='text-red-500 mt-2'>{errorMessage}</div>
             )}
