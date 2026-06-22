@@ -7,9 +7,10 @@ import ErrorPage from '../../shared/ErrorPage';
 import { useEffect } from 'react';
 
 const Dashboard = () => {
-    
+
   const dispatch = useDispatch();
   const {isLoading, errorMessage} = useSelector((state) => state.errors);
+  
   const { 
     analytics: { productCount, totalRevenue, totalOrders },
    } = useSelector((state) => state.admin);
@@ -28,9 +29,7 @@ const Dashboard = () => {
   
   return (
     <div>
-      <div className='flex md:flex-row mt-8 flex-col lg:justify-between 
-          border border-slate-400 rounded-lg bg-linear-to-r
-           from-blue-50 to-blue-100 shadow-lg'>
+      <div className='flex md:flex-row mt-8 flex-col lg:justify-between border border-slate-400 rounded-lg bg-linear-to-r from-blue-50 to-blue-100 shadow-lg'>
             <DashboardOverview 
               title="Total Products"
               amount={productCount}
