@@ -13,6 +13,7 @@ const Orders = () => {
   useOrderFilter();
 
   const emptyOrder = !adminOrder || adminOrder?.length ===0;
+  
   return (
     <div className='pb-6 pt-20'>
         {emptyOrder ? (

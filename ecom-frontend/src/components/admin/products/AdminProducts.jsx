@@ -93,6 +93,7 @@ const onDeleteHandler = () => {
 };
 
   const emptyProduct = !products || products?.length ===0;
+  
   return (
     <div>
       <div className='pt-6 pb-10 flex justify-end'>
