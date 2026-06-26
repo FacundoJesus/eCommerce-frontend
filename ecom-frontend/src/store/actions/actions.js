@@ -607,8 +607,8 @@ export const deleteCategoryDashboardAction =
 
 
   export const getAllSellersDashboard =
-  (queryString) => async (dispatch, getState) => {
-    const { user } = getState().auth;
+  (queryString) => async (dispatch, /*getState*/) => {
+    //const { user } = getState().auth;
     try {
       dispatch({ type: "IS_FETCHING" });
       const { data } = await api.get(`/auth/sellers?${queryString}`);
