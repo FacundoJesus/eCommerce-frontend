@@ -389,17 +389,19 @@ export const getOrdersForDashboard = (queryString, isAdmin) => async (dispatch) 
 };
 
 
-
+// Actualizar Orden 
 export const updateOrderStatusFromDashboard =
-     (orderId, orderStatus, toast, setLoader, isAdmin) => async (dispatch) => {
+     (orderId, orderStatus, toast, setLoader, isAdmin, queryString) => async (dispatch) => {
     try {
         setLoader(true);
         const endpoint = isAdmin ? "/admin/orders/" : "/seller/orders/";
         const { data } = await api.put(`${endpoint}${orderId}/status`, { status: orderStatus});
+
         toast.success(data.message || "Order updated successfully");
-        await dispatch(getOrdersForDashboard());
+        await dispatch(getOrdersForDashboard(queryString, isAdmin));
+        
     } catch (error) {
-        console.log(error);
+        console.log("ERROR:", error);
         toast.error(error?.response?.data?.message || "Internal Server Error");
     } finally {
         setLoader(false)
