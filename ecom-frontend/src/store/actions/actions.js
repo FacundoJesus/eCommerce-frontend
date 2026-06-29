@@ -511,7 +511,7 @@ export const updateProductImageFromDashboard =
     }
 };
 
-
+// Obtener todas las categorías desde el panel de administrador
 export const getAllCategoriesDashboard = (queryString) => async (dispatch) => {
   dispatch({ type: "CATEGORY_LOADER" });
   try {

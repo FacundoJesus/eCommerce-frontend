@@ -20,7 +20,7 @@ const AdminProducts = () => {
   // const pagination = { pageNumber: 0, pageSize: 50, totalElements: 11, totalPages: 1, lastPage: true };
   
   const {products, pagination} = useSelector((state) => state.products);
-  const { isLoading, errorMessage } = useSelector((state) => state.errors);
+  const { isLoading, /*errorMessage*/ } = useSelector((state) => state.errors);
   const [currentPage, setCurrentPage] = useState(
       pagination?.pageNumber + 1 || 1
     );

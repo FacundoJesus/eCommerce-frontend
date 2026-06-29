@@ -1,6 +1,6 @@
 import { FaExclamationTriangle } from "react-icons/fa";
 import { FaTimes } from "react-icons/fa";
-import {  Dialog, DialogBackdrop, DialogPanel, DialogTitle,} from "@headlessui/react";
+import {  Dialog, DialogBackdrop, DialogPanel, DialogTitle} from "@headlessui/react";
 
 export const DeleteModal = ({
   open,
