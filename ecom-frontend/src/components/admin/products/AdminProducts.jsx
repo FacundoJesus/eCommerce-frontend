@@ -8,7 +8,7 @@ import { adminProductTableColumn } from '../../helper/tableColumn';
 import { useDashboardProductFilter } from '../../../hooks/useProductFilter';
 import Modal from '../../shared/Modal';
 import AddProductForm from './AddProductForm';
-import DeleteModal from '../../shared/DeleteProductModal';
+import DeleteModal from '../../shared/DeleteModal';
 import { deleteProduct } from '../../../store/actions/actions';
 import toast from 'react-hot-toast';
 import ImageUploadForm from './ImageUploadForm';
