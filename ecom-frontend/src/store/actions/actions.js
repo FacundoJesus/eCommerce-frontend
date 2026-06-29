@@ -454,9 +454,9 @@ export const updateProductFromDashboard =
     }
 };
 
-
+// Agregar nuevo producto al panel de administrador
 export const addNewProductFromDashboard = 
-    (sendData, toast, reset, setLoader, setOpen, isAdmin) => async(dispatch) => {
+    (sendData, toast, reset, setLoader, setOpen, isAdmin, queryString) => async(dispatch) => {
         try {
             setLoader(true);
             const endpoint = isAdmin ? "/admin/categories/" : "/seller/categories/";
@@ -466,7 +466,7 @@ export const addNewProductFromDashboard =
             toast.success("Product created successfully");
             reset();
             setOpen(false);
-            await dispatch(dashboardProductsAction());
+            await dispatch(dashboardProductsAction(queryString,isAdmin));
         } catch (error) {
             console.error(error);
             toast.error(error?.response?.data?.description || "Product creation failed");
@@ -475,8 +475,9 @@ export const addNewProductFromDashboard =
         }
     }
 
+// Borrar producto desde el panel de administrador
 export const deleteProduct = 
-    (setLoader, productId, toast, setOpenDeleteModal, isAdmin) => async (dispatch) => {
+    (setLoader, productId, toast, setOpenDeleteModal, isAdmin, queryString) => async (dispatch) => {
     try {
         setLoader(true)
         const endpoint = isAdmin ? "/admin/products/" : "/seller/products/";
@@ -484,7 +485,7 @@ export const deleteProduct =
         toast.success("Product deleted successfully");
         setLoader(false);
         setOpenDeleteModal(false);
-        await dispatch(dashboardProductsAction());
+        await dispatch(dashboardProductsAction(queryString,isAdmin));
     } catch (error) {
         console.log(error);
         toast.error(
@@ -493,9 +494,9 @@ export const deleteProduct =
     }
 };
 
-
+// Actualizar imagen producto desde el panel de administrador
 export const updateProductImageFromDashboard = 
-    (formData, productId, toast, setLoader, setOpen, isAdmin) => async (dispatch) => {
+    (formData, productId, toast, setLoader, setOpen, isAdmin, queryString) => async (dispatch) => {
     try {
         setLoader(true);
         const endpoint = isAdmin ? "/admin/products/" : "/seller/products/";
@@ -503,12 +504,13 @@ export const updateProductImageFromDashboard =
         toast.success("Image upload successful");
         setLoader(false);
         setOpen(false);
-        await dispatch(dashboardProductsAction());
+        await dispatch(dashboardProductsAction(queryString, isAdmin));
     } catch (error) {
         toast.error(error?.response?.data?.description || "Product Image upload failed");
      
     }
 };
+
 
 export const getAllCategoriesDashboard = (queryString) => async (dispatch) => {
   dispatch({ type: "CATEGORY_LOADER" });
