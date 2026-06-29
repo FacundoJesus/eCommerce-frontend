@@ -111,17 +111,17 @@ export const adminProductTableColumn = (
     renderHeader: (params) => <span>Action</span>,
     renderCell: (params) => {
       return (
-        <div className="flex justify-center items-center space-x-2 h-full pt-2">
+        <div className="flex justify-center items-center gap-4 h-full pt-2">
           <button
             onClick={() => handleImageUpload(params.row)}
-            className="flex items-center bg-green-500 hover:bg-green-600 text-white px-4 h-9 rounded-md"
+            className="flex items-center bg-green-500 hover:bg-green-600 text-white px-4 h-9 rounded-md cursor-pointer"
           >
             <FaImage className="mr-2" />
             Image
           </button>
           <button
             onClick={() => handleEdit(params.row)}
-            className="flex items-center bg-blue-500 text-white px-4 h-9 rounded-md "
+            className="flex items-center bg-blue-500 text-white px-4 h-9 rounded-md cursor-pointer"
           >
             <FaEdit className="mr-2" />
             Edit
@@ -129,14 +129,14 @@ export const adminProductTableColumn = (
 
           <button
             onClick={() => handleDelete(params.row)}
-            className="flex items-center bg-red-500 text-white px-4   h-9 rounded-md"
+            className="flex items-center bg-red-500 text-white px-4 h-9 rounded-md cursor-pointer"
           >
             <FaTrashAlt className="mr-2" />
             Delete
           </button>
           <button
             onClick={() => handleProductView(params.row)}
-            className="flex items-center bg-slate-800 text-white px-4   h-9 rounded-md"
+            className="flex items-center bg-slate-800 text-white px-4 h-9 rounded-md cursor-pointer"
           >
             <FaEye className="mr-2" />
             View
