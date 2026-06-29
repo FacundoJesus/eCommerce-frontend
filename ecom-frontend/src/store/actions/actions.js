@@ -347,6 +347,7 @@ export const stripePaymentConfirmation
         }
 };
 
+// Obtener las analiticas desde el panel de Administrador
 export const analyticsAction = () => async (dispatch) => {
         try {
             dispatch({ type: "IS_FETCHING"});
@@ -364,6 +365,7 @@ export const analyticsAction = () => async (dispatch) => {
         }
 };
 
+// Obtener las ordenes desde el panel de Administrador
 export const getOrdersForDashboard = (queryString, isAdmin) => async (dispatch) => {
     try {
         dispatch({ type: "IS_FETCHING" });
@@ -389,7 +391,7 @@ export const getOrdersForDashboard = (queryString, isAdmin) => async (dispatch) 
 };
 
 
-// Actualizar Orden 
+// Actualizar Orden desde el panel de Administrador
 export const updateOrderStatusFromDashboard =
      (orderId, orderStatus, toast, setLoader, isAdmin, queryString) => async (dispatch) => {
     try {
@@ -408,7 +410,7 @@ export const updateOrderStatusFromDashboard =
     }
 };
 
-
+// Obtener los productos desde el panel de Administrador
 export const dashboardProductsAction = (queryString, isAdmin) => async (dispatch) => {
     try {
         dispatch({ type: "IS_FETCHING" });
@@ -433,9 +435,9 @@ export const dashboardProductsAction = (queryString, isAdmin) => async (dispatch
     }
 };
 
-
+// Actualizar producto desde el panel de administrador
 export const updateProductFromDashboard = 
-    (sendData, toast, reset, setLoader, setOpen, isAdmin) => async (dispatch) => {
+    (sendData, toast, reset, setLoader, setOpen, isAdmin, queryString) => async (dispatch) => {
     try {
         setLoader(true);
         const endpoint = isAdmin ? "/admin/products/" : "/seller/products/";
@@ -444,13 +446,13 @@ export const updateProductFromDashboard =
         reset();
         setLoader(false);
         setOpen(false);
-        await dispatch(dashboardProductsAction());
+        await dispatch(dashboardProductsAction(queryString,isAdmin));
     } catch (error) {
+        console.log(error);
         toast.error(error?.response?.data?.description || "Product update failed");
      
     }
 };
-
 
 
 export const addNewProductFromDashboard = 

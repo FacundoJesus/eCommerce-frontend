@@ -12,14 +12,14 @@ import ErrorPage from '../../shared/ErrorPage';
 
 
 const AddProductForm = ({ setOpen, product, update=false}) => {
-const [loader, setLoader] = useState(false);
-const [selectedCategory, setSelectedCategory] = useState();
-const { categories } = useSelector((state) => state.products);
-const { categoryLoader, errorMessage } = useSelector((state) => state.errors);
-const { user } = useSelector((state) => state.auth);
-const isAdmin = user && user?.roles?.includes("ROLE_ADMIN");
+    const [loader, setLoader] = useState(false);
+    const [selectedCategory, setSelectedCategory] = useState();
+    const { categories } = useSelector((state) => state.products);
+    const { categoryLoader, errorMessage } = useSelector((state) => state.errors);
+    const { user } = useSelector((state) => state.auth);
+    const isAdmin = user && user?.roles?.includes("ROLE_ADMIN");
 
-const dispatch = useDispatch();
+    const dispatch = useDispatch();
     const {
         register,
         handleSubmit,
