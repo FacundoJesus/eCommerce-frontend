@@ -111,7 +111,7 @@ export const adminProductTableColumn = (
     renderHeader: (params) => <span>Action</span>,
     renderCell: (params) => {
       return (
-        <div className="flex justify-center items-center space-x-2 h-full pt-2"> 
+        <div className="flex justify-center items-center gap-2 h-full pt-2"> 
           <button
             onClick={() => handleImageUpload(params.row)}
             className="flex items-center bg-green-500 hover:bg-green-600 text-white px-4 h-9 rounded-md cursor-pointer"

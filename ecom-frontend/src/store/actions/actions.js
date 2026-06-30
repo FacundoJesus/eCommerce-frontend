@@ -460,11 +460,9 @@ export const addNewProductFromDashboard =
         try {
             setLoader(true);
             const endpoint = isAdmin ? "/admin/categories/" : "/seller/categories/";
-            await api.post(`${endpoint}${sendData.categoryId}/product`,
-                sendData
-            );
+            await api.post(`${endpoint}${sendData.categoryId}/product`, sendData);
             toast.success("Product created successfully");
-            reset();
+            reset(); // Limpiar el formulario
             setOpen(false);
             await dispatch(dashboardProductsAction(queryString,isAdmin));
         } catch (error) {

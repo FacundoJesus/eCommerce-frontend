@@ -168,7 +168,6 @@ const onDeleteHandler = () => {
           />
     </Modal>
 
-
     <Modal
       open={openImageUploadModal}
       setOpen={setOpenImageUploadModal}
@@ -179,19 +178,19 @@ const onDeleteHandler = () => {
           />
     </Modal>
 
-
     <DeleteModal
       open={openDeleteModal}
       setOpen={setOpenDeleteModal}
       loader={loader}
       title="Delete Product"
-      onDeleteHandler={onDeleteHandler} />
+      onDeleteHandler={onDeleteHandler} 
+    />
 
-      <ProductViewModal 
+    <ProductViewModal 
         open={openProductViewModal}
         setOpen={setOpenProductViewModal}
         product={selectedProduct}
-      />
+    />
     </div>
   )
 }

@@ -77,34 +77,36 @@ const ImageUploadForm = ({ setOpen, product }) => {
                         <button
                             type='button'
                             onClick={handleClearImage}
-                            className='bg-rose-600 text-white px-2 py-1 rounded-md'>Clear Image</button>
+                            className='bg-rose-600 text-white px-2 py-1 rounded-md cursor-pointer'>
+                            Clear Image
+                        </button>
                     </div>
                 )}
             </div>
 
             <div className='flex w-full justify-between items-center absolute bottom-14'>
-            <Button disabled={loader}
-                    onClick={() => setOpen(false)}
-                    variant='outlined'
-                    className='text-white py-2.5 px-4 text-sm font-medium'>
-                Cancel
-            </Button>
+                <Button disabled={loader}
+                        onClick={() => setOpen(false)}
+                        variant='outlined'
+                        className='text-white py-2.5 px-4 text-sm font-medium'>
+                    Cancel
+                </Button>
 
-            <Button
-                disabled={loader}
-                type='submit'
-                variant='contained'
-                color='primary'
-                className='bg-custom-blue text-white  py-2.5 px-4 text-sm font-medium'>
-                {loader ? (
-                    <div className='flex gap-2 items-center'>
-                        <Spinners /> Loading...
-                    </div>
-                ) : (
-                    "Update"
-                )}
-            </Button>
-        </div>
+                <Button
+                    disabled={loader}
+                    type='submit'
+                    variant='contained'
+                    color='primary'
+                    className='bg-custom-blue text-white  py-2.5 px-4 text-sm font-medium'>
+                    {loader ? (
+                        <div className='flex gap-2 items-center'>
+                            <Spinners /> Loading...
+                        </div>
+                    ) : (
+                        "Update"
+                    )}
+                </Button>
+            </div>
         </form>
     </div>
   )
