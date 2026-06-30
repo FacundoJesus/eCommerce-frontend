@@ -285,10 +285,10 @@ export const categoryTableColumns = (handleEdit, handleDelete) => [
     renderHeader: (params) => <span>Action</span>,
     renderCell: (params) => {
       return (
-        <div className="flex justify-center space-x-2 h-full pt-2">
+        <div className="flex justify-center gap-4 h-full pt-2">
           <button
             onClick={() => handleEdit(params.row)}
-            className="flex items-center bg-blue-500 text-white px-4 h-9 rounded-md "
+            className="flex items-center bg-blue-500 text-white px-4 h-9 rounded-md cursor-pointer"
           >
             <FaEdit className="mr-2" />
             Edit
@@ -297,7 +297,7 @@ export const categoryTableColumns = (handleEdit, handleDelete) => [
           {/* Delete Button */}
           <button
             onClick={() => handleDelete(params.row)}
-            className="flex items-center bg-red-500 text-white px-4   h-9 rounded-md"
+            className="flex items-center bg-red-500 text-white px-4 h-9 rounded-md cursor-pointer"
           >
             <FaTrashAlt className="mr-2" />
             Delete

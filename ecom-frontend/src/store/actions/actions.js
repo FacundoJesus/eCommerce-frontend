@@ -535,8 +535,9 @@ export const getAllCategoriesDashboard = (queryString) => async (dispatch) => {
   }
 };
 
+// Crear categoria desde el panel de administrador
 export const createCategoryDashboardAction =
-  (sendData, setOpen, reset, toast) => async (dispatch) => {
+  (sendData, setOpen, reset, toast, queryString) => async (dispatch) => {
     try {
       dispatch({ type: "CATEGORY_LOADER" });
       await api.post("/admin/categories", sendData);
@@ -544,7 +545,7 @@ export const createCategoryDashboardAction =
       reset();
       toast.success("Category Created Successful");
       setOpen(false);
-      await dispatch(getAllCategoriesDashboard());
+      await dispatch(getAllCategoriesDashboard(queryString));
     } catch (err) {
       console.log(err);
       toast.error(
@@ -558,6 +559,7 @@ export const createCategoryDashboardAction =
     }
   };
 
+// Actualizar categoria desde el panel de administrador
 export const updateCategoryDashboardAction =
   (sendData, setOpen, categoryID, reset, toast) =>
   async (dispatch) => {
@@ -585,6 +587,7 @@ export const updateCategoryDashboardAction =
     }
   };
 
+// Borrar categoria desde el panel de administrador
 export const deleteCategoryDashboardAction =
   (setOpen, categoryID, toast) => async (dispatch) => {
     try {
