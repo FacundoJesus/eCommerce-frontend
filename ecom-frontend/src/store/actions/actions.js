@@ -610,8 +610,8 @@ export const deleteCategoryDashboardAction =
     }
   };
 
-
-  export const getAllSellersDashboard =
+// Obtener todos los usuarios con el rol de Vendedores
+export const getAllSellersDashboard =
   (queryString) => async (dispatch, /*getState*/) => {
     //const { user } = getState().auth;
     try {
