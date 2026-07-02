@@ -38,14 +38,18 @@ const UserMenu = () => {
           <Avatar alt='Menu' src=''/>
         </div>
         <Menu
-          sx={{ width:"400px" }}
+          sx={{ width: "400px" }}
           id="basic-menu"
           anchorEl={anchorEl}
           open={open}
           onClose={handleClose}
-          MenuListProps={{
-            'aria-labelledby': 'basic-button',
-             sx: {width: 160},
+          slotProps={{
+            list: {
+              "aria-labelledby": "basic-button",
+              sx: {
+                width: 160,
+              },
+            },
           }}
         >
 
